@@ -1,4 +1,0 @@
-/mnt/hgfs/share/objtest/build/src/binarytree/CMakeFiles/BiT.dir
-/mnt/hgfs/share/objtest/build/src/nrv/CMakeFiles/Nrv.dir
-/mnt/hgfs/share/objtest/build/src/utility/CMakeFiles/Utility.dir
-/mnt/hgfs/share/objtest/build/CMakeFiles/main.dir

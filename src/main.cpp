@@ -29,6 +29,7 @@ int main()
 
 	t.TraversalL();
 	t.TraversalM();
+	t.TraversalR();
 
 	return 0;
 }

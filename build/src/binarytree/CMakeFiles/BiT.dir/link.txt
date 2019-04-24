@@ -1,1 +1,0 @@
-g++  -fPIC    -shared -Wl,-soname,libBiT.so -o ../../../lib/libBiT.so CMakeFiles/BiT.dir/binarytree.cpp.o 

@@ -162,6 +162,13 @@ public:
 		_TraversalL(head);
 		cout << "\n----------------------\n";
 	}
+	void TraversalR()
+	{
+		
+		cout << "\n--------- R ----------\n";
+		_TraversalR(head);
+		cout << "\n----------------------\n";
+	}
 private:
 
 	void _Print(Node<T>* n)
@@ -221,6 +228,32 @@ private:
 				n = n->right;
 			}
 
+		}
+	}
+	void _TraversalR(Node<T>* n)
+	{
+		
+		Stack<Node<T>*> s;
+		Stack<Node<T>*> sL;
+		while(n)
+		{
+			while(n)
+			{
+				s.Push(n);
+				if(n->left)
+				{
+					sL.Push(n->left);
+				}
+				n = n->right;
+			}
+			n = sL.Pop();
+		}
+
+		n = s.Pop();
+		while(n)
+		{
+			_Print(n);
+			n = s.Pop();
 		}
 	}
 private:

@@ -1,1 +1,0 @@
-g++  -fPIC    -shared -Wl,-soname,libNrv.so -o ../../../lib/libNrv.so CMakeFiles/Nrv.dir/nrv.cpp.o 
