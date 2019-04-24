@@ -1,2 +1,2 @@
-# obetest
-c++ test
+# objTest
+c++ stuct and alg 
