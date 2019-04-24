@@ -1,0 +1,1 @@
+g++       CMakeFiles/main.dir/src/main.cpp.o  -o ../bin/main -rdynamic ../lib/libUtility.so ../lib/libNrv.so ../lib/libBiT.so -Wl,-rpath,/mnt/hgfs/share/objtest/lib 

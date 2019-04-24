@@ -1,0 +1,1 @@
+g++  -fPIC    -shared -Wl,-soname,libUtility.so -o ../../../lib/libUtility.so CMakeFiles/Utility.dir/utility.cpp.o 

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/hgfs/share/objtest/src/nrv/nrv.cpp
+nrv.h
+/mnt/hgfs/share/objtest/src/nrv/nrv.h
+
+/mnt/hgfs/share/objtest/src/nrv/nrv.h
+iostream
+-
+memory.h
+-
+

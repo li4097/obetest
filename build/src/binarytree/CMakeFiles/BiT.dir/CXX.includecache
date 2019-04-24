@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/utility/utility.h
+iostream
+-
+stdio.h
+-
+stdint.h
+-
+sys/time.h
+-
+
+/mnt/hgfs/share/objtest/src/binarytree/binarytree.cpp
+binarytree.h
+/mnt/hgfs/share/objtest/src/binarytree/binarytree.h
+
+/mnt/hgfs/share/objtest/src/binarytree/binarytree.h
+utility.h
+/mnt/hgfs/share/objtest/src/binarytree/utility.h
+
