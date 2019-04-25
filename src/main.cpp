@@ -27,9 +27,14 @@ int main()
 	t.Insert(5);
 	t.Insert(9);
 
-	t.TraversalL();
+
 	t.TraversalM();
-	t.TraversalR();
+
+	
+	t.Delete(8);
+	
+	t.TraversalM();
+	t.TraversalL();
 
 	return 0;
 }

@@ -126,26 +126,27 @@ public:
 					tmp = tmp->left;
 					tmp->left = n->left;
 				}
-				if(nullptr != tmp)
+				if(tmp)
 				{
-					if(nullptr == prev)
-					{
-						n = tmp;
-						delete head;
-						head = n;
-					}
-					else if(isLeft)
-					{
-						prev->left = tmp;
-						delete n;
-					}
-					else
-					{
-						prev->right = tmp;
-						delete n;
-					}
-					return;
+					tmp->level = n->level;
 				}
+				if(nullptr == prev)
+				{
+					n = tmp;
+					delete head;
+					head = n;
+				}
+				else if(isLeft)
+				{
+					prev->left = tmp;
+					delete n;
+				}
+				else
+				{
+					prev->right = tmp;
+					delete n;
+				}
+				return;
 			}
 		}
 	}
