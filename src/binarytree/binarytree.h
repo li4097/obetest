@@ -40,6 +40,10 @@ public:
 	~BinaryTree()
 	{};
 
+    uint32_t GetSize()
+    {
+        return size;
+    }
 	Node<T>* GetHead()
 	{
 		return head;
@@ -65,7 +69,7 @@ public:
 				}
 				n = n->left;
 			}
-			else
+			else if(n->data < data)
 			{
 				if(nullptr == n->right)
 				{
@@ -74,6 +78,10 @@ public:
 					break;
 				}
 				n = n->right;
+			}
+			else
+			{
+				n = nullptr;
 			}
 		}
 		if (nullptr != n)
@@ -232,7 +240,9 @@ public:
 		{
 			return;
 		}
-		for(int i = 0; i < n->height; i++)
+		cout << (int)n->height << " ";
+		uint32_t count = 20 - n->height;
+		for(uint32_t i = 0; i < count; i++)
 		{
 			cout << "--";
 		}

@@ -11,7 +11,10 @@
 #include<iostream>
 #include<stdio.h>
 #include<stdint.h>
+#include<memory.h>
 #include<sys/time.h>
+#include<stdlib.h>
+//#include<time.h>
 
 
 using namespace std;
@@ -66,7 +69,7 @@ public:
 		return index <= 0;
 	}
 private:
-	int size;
+	uint32_t size;
 	int index;
 
 	T* array;

@@ -11,7 +11,7 @@
 #include "utility.h"
 #include "binarytree.h"
 
-#define MAX(x,y) (x) > (y) ? (x) : (y)
+#define MAX(x,y) ((x) > (y) ? (x) : (y))
 template<class T>
 class AVLTree
 {
@@ -23,14 +23,23 @@ public:
 	~AVLTree()
 	{};
 
-	bool Insert(const T& data)
+	void Insert(const T& data)
 	{
         _Insert(head,data);
 	}
 	void Delete(const T& data)
 	{
-        _Delete(head,data);
+        _Remove(head,data);
 	}
+    
+    Node<T>* GetHead()
+    {
+        return head;
+    }
+    uint32_t GetSize()
+    {
+        return size;
+    }
 private:
 
     
@@ -46,7 +55,9 @@ private:
     {
         if(n)
         {
-            n->height = MAX(_GetHeight(n->left),_GetHeight(n->right)) + 1;
+            uint8_t byLeft = _GetHeight(n->left);
+            uint8_t byRight = _GetHeight(n->right);
+            n->height = MAX(byLeft,byRight) + 1;
         }
     }
     //左左 单旋右旋
@@ -54,7 +65,7 @@ private:
     {
         if(nullptr == t || nullptr == t->left)
         {
-            return;
+            return t;
         }
         Node<T>* tmp = t->left;
         t->left = tmp->right;
@@ -70,7 +81,7 @@ private:
     {
         if(nullptr == t || nullptr == t->right)
         {
-            return;
+            return t;
         }
         Node<T>* tmp = t->right;
         t->right = tmp->left;
@@ -86,34 +97,40 @@ private:
     {
         if(nullptr == t)
         {
-            return;
+            return t;
         }
         t->left = _singleRotateWithLeft(t->left);
-        t =  _singleRotateWithRight(t->t);
+        t =  _singleRotateWithRight(t);
+
+        return t;
     }
     //右左 先右后左
     Node<T>* _doubleRotateWithRightLeft(Node<T>* t)
     {
         if(nullptr == t)
         {
-            return;
+            return t;
         }
         t->right = _singleRotateWithRight(t->right);
-        t =  _singleRotateWithLeft(t->t);
+        t =  _singleRotateWithLeft(t);
+
+        
+        return t;
     }
-    Node<T>* _Insert(Node<T>* t,T data)
+    Node<T>* _Insert(Node<T>* & t,T data)
     {
         if(nullptr == t)
         {
             t = new Node<T>(data);
-            t.data = data;
-            t.left = nullptr;
-            t.right = nullptr;
-            t.height = 1;
+            t->data = data;
+            t->left = nullptr;
+            t->right = nullptr;
+            t->height = 1;
+            size++;
         }
         else
         {
-            if(t.data > data)
+            if(t->data > data)
             {
                 t->left = _Insert(t->left,data);
                 if(t->left)
@@ -133,7 +150,7 @@ private:
                     }
                 }
             }
-            else if(t.data < data)
+            else if(t->data < data)
             {
                 t->right = _Insert(t->right,data);
                 if(t->right)
@@ -157,7 +174,7 @@ private:
         }
         return t;
     }
-    Node<T>* _Remove(Node<T>* t,T data)
+    Node<T>* _Remove(Node<T>* & t,T data)
     {
         if (nullptr == t)
         {
@@ -261,6 +278,8 @@ private:
                     t = rtn;
                 }
             }
+            
+            size--;
         }
         _SetHeight(t);
 
@@ -273,5 +292,5 @@ private:
 	uint32_t size;
 };
 
-
+void avlTreeTest();
 #endif /* !AVLTREE_H */
