@@ -12,20 +12,20 @@
 
 template<class T>
 struct Node {
-	Node(const T& data,uint8_t level)
+	Node(const T& data,uint8_t height)
 		:data(data),
-		level(level+1),
+		height(height+1),
 		left(nullptr),
 		right(nullptr)
 	{}
 	Node(const T& data)
 		:data(data),
-		level(0),
+		height(0),
 		left(nullptr),
 		right(nullptr)
 	{}
 	T data;
-	uint8_t level;
+	uint8_t height;
 	Node* left;
 	Node* right;
 };
@@ -40,6 +40,10 @@ public:
 	~BinaryTree()
 	{};
 
+	Node<T>* GetHead()
+	{
+		return head;
+	}
 	bool Insert(const T& data)
 	{
 		Node<T>* n = head;
@@ -55,7 +59,7 @@ public:
 			{
 				if(nullptr == n->left)
 				{
-					n->left = new Node<T>(data,n->level);
+					n->left = new Node<T>(data,n->height);
 					n = n->left;
 					break;
 				}
@@ -65,7 +69,7 @@ public:
 			{
 				if(nullptr == n->right)
 				{
-					n->right = new Node<T>(data,n->level);
+					n->right = new Node<T>(data,n->height);
 					n = n->right;
 					break;
 				}
@@ -128,7 +132,7 @@ public:
 				}
 				if(tmp)
 				{
-					tmp->level = n->level;
+					tmp->height = n->height;
 				}
 				if(nullptr == prev)
 				{
@@ -150,65 +154,7 @@ public:
 			}
 		}
 	}
-	void TraversalM()
-	{
-		cout << "\n--------- M ----------\n";
-		_TraversalM(head);
-		cout << "\n----------------------\n";
-	}
-	void TraversalL()
-	{
-		
-		cout << "\n--------- L ----------\n";
-		_TraversalL(head);
-		cout << "\n----------------------\n";
-	}
-	void TraversalR()
-	{
-		
-		cout << "\n--------- R ----------\n";
-		_TraversalR(head);
-		cout << "\n----------------------\n";
-	}
-private:
-
-	void _Print(Node<T>* n)
-	{
-		if(nullptr == n)
-		{
-			return;
-		}
-		for(int i = 0; i < n->level; i++)
-		{
-			cout << "--";
-		}
-		cout << "|";
-		cout << " " << n->data << endl;
-	}
-	void _TraversalL(Node<T>* n)
-	{	
-		Stack<Node<T>*> s;
-		while(n)
-		{
-			while(n)
-			{
-				_Print(n);
-				s.Push(n);
-				n = n->left;
-			}
-			while(!n)
-			{
-				n = s.Pop();
-				if(nullptr == n)
-				{
-					break;
-				}
-				n = n->right;
-			}
-
-		}
-	}
-	void _TraversalM(Node<T>* n)
+	static void TraversalM(Node<T>* n)
 	{	
 		Stack<Node<T>*> s;
 		while(n)
@@ -225,13 +171,36 @@ private:
 				{
 					break;
 				}
-				_Print(n);
+				Print(n);
 				n = n->right;
 			}
 
 		}
 	}
-	void _TraversalR(Node<T>* n)
+	static void TraversalL(Node<T>* n)
+	{	
+		Stack<Node<T>*> s;
+		while(n)
+		{
+			while(n)
+			{
+				Print(n);
+				s.Push(n);
+				n = n->left;
+			}
+			while(!n)
+			{
+				n = s.Pop();
+				if(nullptr == n)
+				{
+					break;
+				}
+				n = n->right;
+			}
+
+		}
+	}
+	static void TraversalR(Node<T>* n)
 	{
 		
 		Stack<Node<T>*> s;
@@ -253,10 +222,26 @@ private:
 		n = s.Pop();
 		while(n)
 		{
-			_Print(n);
+			Print(n);
 			n = s.Pop();
 		}
 	}
+	static void Print(Node<T>* n)
+	{
+		if(nullptr == n)
+		{
+			return;
+		}
+		for(int i = 0; i < n->height; i++)
+		{
+			cout << "--";
+		}
+		cout << "|";
+		cout << " " << n->data << endl;
+	}
+private:
+
+
 private:
 
 	Node<T>* head;

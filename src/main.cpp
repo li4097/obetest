@@ -12,6 +12,7 @@
 #include "utility.h"
 #include "nrv.h"
 #include "binarytree.h"
+#include "avltree.h"
 
 
 int main()
@@ -28,13 +29,13 @@ int main()
 	t.Insert(9);
 
 
-	t.TraversalM();
+	BinaryTree<int>::TraversalM(t.GetHead());
 
 	
 	t.Delete(8);
 	
-	t.TraversalM();
-	t.TraversalL();
+	BinaryTree<int>::TraversalM(t.GetHead());
+	BinaryTree<int>::TraversalL(t.GetHead());
 
 	return 0;
 }

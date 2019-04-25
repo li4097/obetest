@@ -61,6 +61,10 @@ public:
 		}
 		return array[--index];
 	}
+	bool Empty()
+	{
+		return index <= 0;
+	}
 private:
 	int size;
 	int index;
