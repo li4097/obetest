@@ -39,14 +39,16 @@ add_subdirectory( ${SRC_DIR}/utility)
 add_subdirectory( ${SRC_DIR}/nrv)
 add_subdirectory( ${SRC_DIR}/binarytree)
 add_subdirectory( ${SRC_DIR}/avltree)
+add_subdirectory( ${SRC_DIR}/redblacktree)
 
 include_directories(
 	${SRC_DIR}/utility
 	${SRC_DIR}/nrv
 	${SRC_DIR}/binarytree
 	${SRC_DIR}/avltree
+	${SRC_DIR}/redblacktree
 	)
 
 add_executable(main ${SRC_DIR}/main.cpp)
-target_link_libraries(main Utility Nrv BiT AvlT)
+target_link_libraries(main Utility Nrv BiT AvlT RBT)
 #link_directories(${LIBRARY_OUTPUT_PATH})
